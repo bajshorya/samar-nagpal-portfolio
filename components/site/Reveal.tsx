@@ -43,11 +43,15 @@ export function MaskLine({
   delay = 0,
   className,
   trigger = "inView",
+  pad,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
   trigger?: "inView" | "mount";
+  // Extra clip room below the baseline (em) so deep serif descenders aren't
+  // shaved at tight line-heights. Inline style overrides the .mask-line default.
+  pad?: number;
 }) {
   const reduce = useReducedMotion();
   const animateProps =
@@ -58,7 +62,14 @@ export function MaskLine({
           viewport: { once: true, margin: "-8% 0px -8% 0px" },
         };
   return (
-    <span className="mask-line">
+    <span
+      className="mask-line"
+      style={
+        pad != null
+          ? { paddingBottom: `${pad}em`, marginBottom: `-${pad}em` }
+          : undefined
+      }
+    >
       <motion.span
         className={`block ${className ?? ""}`}
         initial={reduce ? { opacity: 0 } : { y: "110%" }}

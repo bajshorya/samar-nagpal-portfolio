@@ -390,6 +390,7 @@ export function Hero() {
               <MaskLine
                 key={line}
                 trigger="mount"
+                pad={0.32}
                 delay={0.35 + i * 0.14}
                 className="text-[clamp(2.85rem,11vw,8.5rem)] leading-[0.9]"
               >
