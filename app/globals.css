@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.125rem;
+
+    /* Editorial display serif, linked at runtime in the document head */
+    --font-display: "Fraunces", Georgia, serif;
+
+    /* Dark neutral foundation */
+    --ink-900: #080808;
+    --ink-800: #0d0d0d;
+    --ink-700: #111111;
+
+    /* Off-white ink */
+    --paper: #f3efe6;
+
+    /* Campaign accents */
+    --coral: #ff5a36;
+    --pink: #e2879f;
+    --lavender: #b3a6ef;
+    --lime: #c9d661;
+
+    /* Live accent — set per active section by the accent hook.
+       Elements that read it transition their resolved color, so the
+       page recolours gradually as you scroll between chapters. */
+    --accent: #ff5a36;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--ink-900);
+    color: var(--paper);
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #080808;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink-900);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1c1c1c;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a2a2a;
+  }
+}
+
+@layer utilities {
+  .hairline {
+    border-color: rgba(243, 239, 230, 0.1);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Elements that should follow the live section accent, smoothly. */
+  .accent-text {
+    color: var(--accent);
+    transition: color 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .accent-bg {
+    background-color: var(--accent);
+    transition: background-color 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .accent-border {
+    border-color: var(--accent);
+    transition: border-color 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Line-mask reveal: text wiped up from behind an invisible horizontal mask.
+   Used for editorial headline entrances. */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  /* Extend the clip below the baseline so serif descenders aren't shaved,
+     then pull the layout back tight. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* Subtle film grain — fixed, non-interactive */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Editorial image treatment: muted, faintly grained campaign frames */
+.frame-grain {
+  position: relative;
+}
+.frame-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
