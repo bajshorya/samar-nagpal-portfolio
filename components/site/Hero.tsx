@@ -385,14 +385,13 @@ export function Hero() {
             {hero.eyebrow}
           </motion.span>
 
-          <h1 className="mt-6 font-display font-medium tracking-tight text-paper">
+          <h1 className="mt-6 font-display text-[clamp(2.85rem,11vw,8.5rem)] font-medium leading-[0.9] tracking-tight text-paper">
             {hero.lines.map((line, i) => (
               <MaskLine
                 key={line}
                 trigger="mount"
-                pad={0.32}
+                pad={0.34}
                 delay={0.35 + i * 0.14}
-                className="text-[clamp(2.85rem,11vw,8.5rem)] leading-[0.9]"
               >
                 {line === hero.emphasisWord ? (
                   <span className="relative inline-block">
