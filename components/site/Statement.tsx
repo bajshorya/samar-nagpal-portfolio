@@ -18,10 +18,10 @@ export function Statement({
 }) {
   const reduce = useReducedMotion();
   return (
-    <section className="relative flex min-h-[82svh] items-center overflow-hidden">
+    <section className="relative flex min-h-[62svh] items-center py-24 md:min-h-[82svh] md:py-0">
       <div className={`${SHEET} w-full`}>
         <div className={align === "right" ? "ml-auto text-right" : ""}>
-          <h2 className="max-w-5xl font-display text-[clamp(2.25rem,7.5vw,6rem)] font-light leading-[1.02] tracking-tight text-paper">
+          <h2 className="max-w-5xl text-balance font-display text-[clamp(1.9rem,6.6vw,6rem)] font-light leading-[1.05] tracking-tight text-paper">
             {lines.map((line, i) => {
               const last = i === lines.length - 1;
               return (

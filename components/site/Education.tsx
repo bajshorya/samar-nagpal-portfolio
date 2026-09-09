@@ -7,7 +7,7 @@ import { Reveal } from "./Reveal";
 
 export function Education() {
   return (
-    <section id="education" className="relative py-24 md:py-36">
+    <section id="education" className="relative py-16 md:py-36">
       <div className={SHEET}>
         <div className="grid grid-cols-12 gap-y-10 border-t border-paper/10 pt-8">
           {/* Left: label + note */}

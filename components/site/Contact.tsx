@@ -29,7 +29,7 @@ const links = [
 export function Contact() {
   const reduce = useReducedMotion();
   return (
-    <section id="contact" className="relative pb-24 pt-28 md:pb-32 md:pt-44">
+    <section id="contact" className="relative pb-20 pt-20 md:pb-32 md:pt-44">
       <div className={SHEET}>
         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-paper/50">
           {contact.kicker}

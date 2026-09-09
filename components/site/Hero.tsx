@@ -62,7 +62,7 @@ export function Hero() {
       />
 
       <div
-        className={`${SHEET} relative z-10 flex min-h-[100svh] flex-col justify-between pb-10 pt-24`}
+        className={`${SHEET} relative z-10 flex min-h-[100svh] flex-col pb-8 pt-24`}
       >
         {/* Top metadata row */}
         <Fade delay={0.15} className="flex items-start justify-between">
@@ -81,8 +81,8 @@ export function Hero() {
           </div>
         </Fade>
 
-        {/* The cover statement */}
-        <div className="mt-auto">
+        {/* The cover statement — centred on mobile, dropped low on desktop */}
+        <div className="flex flex-1 flex-col justify-center md:justify-end">
           <Fade delay={0.2}>
             <span className="accent-text font-mono text-[11px] uppercase tracking-[0.24em]">
               {hero.eyebrow}

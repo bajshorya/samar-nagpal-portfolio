@@ -9,7 +9,7 @@ export function Toolkit() {
   const [hover, setHover] = useState<number | null>(null);
 
   return (
-    <section id="toolkit" className="relative py-28 md:py-40">
+    <section id="toolkit" className="relative py-20 md:py-40">
       <div className={SHEET}>
         <Reveal>
           <div className="flex items-baseline justify-between border-t border-paper/10 pt-5">
